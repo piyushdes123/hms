@@ -1,0 +1,47 @@
+<h1>Room Types</h1>
+
+<div class="btn btn-primary">
+  <%= link_to 'Add Room Types', new_roomtype_path, :class => "btn btn-sm", style:"border-color:#70ff7b",style:" background-color:#abff8f"%> 
+</div>
+
+
+  <br>
+
+
+
+<table id="book" border="3" layout= "fixed" width=" 100%"  >
+<br>
+  
+  <tr>
+    <th>roomtype</th>
+    <th>description</th>
+    <th>cost</th>
+    <th> status</th>
+    <th> image</th>
+
+    <th> Action</th>
+   
+  </tr>
+
+<% @roomtypes.each do |stock| %>  
+  <tr >
+    <td><%= stock.roomtype%></td>
+    <td><%= stock.description %></td>
+    <td><%= stock.cost %></td>
+    <td><%= stock.status %></td>
+    <td>
+     <%=image_tag(stock.roomimg)%>
+
+</td>
+
+
+   <td> <%= link_to 'Edit', edit_roomtype_path(stock) ,style:"color:#ac0dfd"%>   
+
+     <%= link_to 'Show', roomtype_path(stock) %>   
+</td>
+
+  </tr>
+<% end %>
+</table>
+
+

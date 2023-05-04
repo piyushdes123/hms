@@ -1,0 +1,36 @@
+<center>
+
+<%= form_with model: @roomtype do |form| %>
+<div class = 'card'>
+  <div>
+    <%= form.label :roomtype %><br>
+    <%= form.text_field :roomtype %>
+  </div>
+
+  <div>
+    <%= form.label :cost %><br>
+    <%= form.text_area :cost %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+     <%= form.label :roomimg %>
+    <%= form.file_field:roomimg %><br>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+  </div>
+  </center>
+
+<% end %>

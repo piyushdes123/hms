@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  roomtype: MyString
+  description: MyString
+  cost: 9.99
+  status: 1
+
+two:
+  roomtype: MyString
+  description: MyString
+  cost: 9.99
+  status: 1
