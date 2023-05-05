@@ -16,15 +16,12 @@
     <%= form.text_area :description %>
   </div>
 
-  <div>
-    <%= form.label :status %><br>
-    <%= form.text_field :status %>
-  </div>
 
   <div>
      <%= form.label :roomimg %>
     <%= form.file_field:roomimg %><br>
   </div>
+<%= form.select :status, options_for_select(Roomtype.statuses.map {|k, v| [k.humanize.capitalize, k]}) %>
 
 
   <div>

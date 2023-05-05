@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   devise_for :customers
   root "bookings#index"
 
-  resources :bookings
+ 
+  get 'bookings/bookings'
 
    resources :roomtypes
-    resources :rooms
+  
+   resources :rooms do  resources :bookings
+    end
 
 
 

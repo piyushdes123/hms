@@ -1,0 +1,40 @@
+<h1>Booking List</h1>
+
+
+
+
+<table id="book" border="3" layout= "fixed" width=" 100%"  >
+<br>
+  
+  <tr>
+    <th>check_in</th>
+    <th>check_out</th>
+    <th> booking_date</th>
+    <th> customer_name</th>
+    <th>roomnumber</th>
+    <th>amount</th>
+
+
+   
+  </tr>
+
+<% @bookings.each do |b| %>  
+  <tr >
+    <td><%= b.check_in%></td>
+    <td><%= b.check_out %></td>
+    <td><%= b.booking_date %></td>
+    <td><%= b.customer.customer_name %></td>
+    <td><%= b.room.roomnumber %></td>
+    <td><%= b.room.roomtype.cost%></td>
+
+
+
+
+  </td>
+
+  </tr>
+
+
+<% end %>
+</table>
+

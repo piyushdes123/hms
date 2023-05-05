@@ -10,25 +10,37 @@
     <th>description</th>
     <th> status</th>
     <th> image</th>
+    
     <th>room type</th>
+        <th>cost</th>
+
 
     <th> Action</th>
    
   </tr>
 
 <% @rooms.each do |room| %>  
+
+<%if room.available?%>
+
   <tr >
     <td><%= room.roomnumber%></td>
     <td><%= room.description %></td>
     <td><%= room.status %></td>
-    <td><%=image_tag(room.roomtype.roomimg)%></td>
+    <td><%=image_tag room.roomtype.roomimg, style: "width:200px; display: block"%></td>
     <td><%= room.roomtype.roomtype %></td>
+        <td><%= room.roomtype.cost %></td>
 
-  
+     <%# <td> <%= link_to 'Booking', new_booking_path(room) ,style:"color:#ac0dfd"%>    
+
+<td><%= link_to 'Book Now', new_room_booking_path(room), :class => 'btn btn-success btn-sm' %>
 
   </td>
 
   </tr>
+  <%end%>
+
+
 <% end %>
 </table>
 

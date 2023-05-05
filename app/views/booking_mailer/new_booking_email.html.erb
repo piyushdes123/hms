@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You got a new booking from <%= @booking.customer.customer_name %>!</p>
+    <p>
+    Booking details<br>
+    --------------------------
+    </p>
+    <p>Name: <%= @booking.customer.customer_name %></p>
+    <p>Email: <%= @booking.check_in %></p>
+    <p>Address: <%= @booking.check_out %></p>
+    <p>
+    Message:<br>
+    ----------
+    </p>
+    <p><%= @booking.message %></p>
+  </body>
+</html>
