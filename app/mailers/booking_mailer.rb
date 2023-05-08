@@ -1,7 +1,20 @@
-class BookingMailer < ApplicationMailer
-  def new_booking_email
-    @booking = params[:booking]
+# class BookingMailer < ApplicationMailer
+#   class BookingMailer < ApplicationMailer
+#     def booking_confirmation(booking)
+#       @booking = booking
+#       mail(to: @booking.email, subject: 'Booking Confirmation')
+#     end
+#   end
+# end
 
-    mail(to: <ADMIN_EMAIL>, subject: "You got a new booking!")
+
+class BookingMailer < ApplicationMailer
+default from: 'testing16538@gmail.com'
+  def welcome_email
+    @customer = params[:customer]
+    @booking = params[:booking]
+    mail(to: current_customer.email, subject: 'Welcome to My Awesome Site')
   end
 end
+
+
