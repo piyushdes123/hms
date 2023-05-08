@@ -27,7 +27,8 @@
     <td><%= room.status %></td>
     <td><%=image_tag room.roomtype.roomimg , style: "width:200px; display: block"%></td>
     <td><%= room.roomtype.roomtype %></td>
-     <td> --------------  </td>
+     <td> <td> <%= link_to 'Edit', edit_room_path(room) ,style:"color:#ac0dfd"%>   
+</td>
   </td>
 
   </tr>

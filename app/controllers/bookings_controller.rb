@@ -21,14 +21,20 @@ class BookingsController < ApplicationController
   end
 
   def create
+    
     @room = Room.find(params[:room_id])
 
     @booking = @room.bookings.create(booking_params)
 
    @room.update(status:"unavailable")
 
-    if @booking.save 
-      # BookingMailer.with(booking: @booking).new_booking_email.deliver_later
+    if @booking.save
+      # debugger 
+      BookingMailer.with(customer:@customer, booking:@booking).welcome_email.deliver_later
+
+      # BookingMailer.with(booking: @booking).booking_confirmation.deliver_later
+      # BookingMailer.booking_confirmation(@booking).deliver_now
+#rishbh sir      BookingMailer.with(user: @user).welcome_email.deliver_now
 
       flash[:success] = 'Product has been added Successfully!'   
 
@@ -48,3 +54,5 @@ class BookingsController < ApplicationController
   end
 
 end  
+
+

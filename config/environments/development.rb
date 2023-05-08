@@ -59,9 +59,30 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'piyushdeshmukh479@gmail.com'}
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+address:              'smtp.gmail.com',
+port:                 587,
+domain:               'gmail.com',
+user_name:            'testing16538@gmail.com',
+password:             'xgwabobijihdvjlj',
+authentication:       'plain',
+enable_starttls_auto: true  } 
+
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 

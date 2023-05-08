@@ -13,22 +13,12 @@ class RoomsController < ApplicationController
       if @room.save
         flash[:success] = 'Product has been added Successfully!'   
   
-        redirect_to "/"
+        redirect_to  rooms_path	
       else
         render :new, status: :unprocessable_entity
       end
     end
   
-
-    # def create
-    #   @roomtype = Roomtype.find(params[:roomtype_id])
-    #   @room = @roomtype.rooms.create(room_params)
-    #   redirect_to roomtype_path(@roomtype)
-    # end
-
-
-
-
      def show
         @room = Room.find(params[:id])
         flash[:notice] = 'This is Your Product List'
@@ -41,11 +31,11 @@ class RoomsController < ApplicationController
   
        def update
         @room = Room.find(params[:id])
-        if @room.update(roomtype_params)
+        if @room.update(room_params)
           flash[:notice] = 'Product has been Updated Successfully!'   
   
   
-          redirect_to "/"
+          redirect_to rooms_path
   
         else
           render :edit, status: :unprocessable_entity
