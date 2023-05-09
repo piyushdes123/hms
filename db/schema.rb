@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_104252) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_114154) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_104252) do
     t.datetime "check_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sur"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
     t.index ["room_id"], name: "index_bookings_on_room_id"
   end
@@ -98,8 +99,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_104252) do
     t.string "address"
     t.integer "contact_no"
     t.integer "gender"
+    t.integer "stripe_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "amount_cents"
+    t.integer "payment_method"
+    t.integer "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "payings", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_payings_on_room_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.string "stripe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -125,4 +151,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_104252) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "customers"
   add_foreign_key "bookings", "rooms"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "payings", "rooms"
+  add_foreign_key "payments", "orders"
 end

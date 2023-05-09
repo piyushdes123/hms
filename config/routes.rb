@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :customers
   root "bookings#index"
 
+  resources :charges, only: [:new, :create]
+
  
   get 'bookings/bookings'
 
@@ -11,7 +13,11 @@ Rails.application.routes.draw do
    resources :rooms do  resources :bookings
     end
 
-
+    namespace :api do
+      namespace :v1 do
+        post :orders, to: 'orders#create'
+      end
+    end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

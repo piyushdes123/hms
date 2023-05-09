@@ -9,12 +9,10 @@
 
 
 class BookingMailer < ApplicationMailer
-default from: 'testing16538@gmail.com'
-  def welcome_email
-    @customer = params[:customer]
-    @booking = params[:booking]
-    mail(to: current_customer.email, subject: 'Welcome to My Awesome Site')
-  end
+
+def welcome_email
+  @customer = params[:customer]
+  @booking = params[:booking]
+  mail(to: @customer.email, subject: 'Welcome to Our Hotel')
 end
-
-
+end
