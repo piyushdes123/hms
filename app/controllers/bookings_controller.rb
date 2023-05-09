@@ -29,8 +29,11 @@ class BookingsController < ApplicationController
    @room.update(status:"unavailable")
 
     if @booking.save
-      # debugger 
-      BookingMailer.with(customer:@customer, booking:@booking).welcome_email.deliver_later
+      # 
+      
+      
+      # BookingMailer.with(booking:@booking).welcome_email.deliver_later
+      BookingMailer.with(customer: current_customer, booking: @booking).welcome_email .deliver_now
 
       # BookingMailer.with(booking: @booking).booking_confirmation.deliver_later
       # BookingMailer.booking_confirmation(@booking).deliver_now
