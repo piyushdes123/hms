@@ -5,11 +5,15 @@ class BookingsController < ApplicationController
 
   def index
     @rooms = Room.all
+
   end
 
 
+
+
+
   def bookings
-    @bookings = Booking.all
+    @bookings = current_customer.bookings
     @roomtype = Roomtype.all
   end
 
@@ -26,7 +30,13 @@ class BookingsController < ApplicationController
 
     @booking = @room.bookings.create(booking_params)
 
-   @room.update(status:"unavailable")
+    @room.update(status:"unavailable")
+
+    @days = (@booking.check_out.to_date - @booking.check_in.to_date).to_i
+
+    @booking.charges = @booking.room.roomtype.cost * @days
+
+
 
     if @booking.save
       # 

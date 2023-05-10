@@ -1,0 +1,38 @@
+
+  <table id="book" border="3" layout= "fixed" width=" 100%"  >
+<br>
+  
+  <tr>
+    <th>roomnumber</th>
+    <th>description</th>
+    <th> status</th>
+    <th> image</th>
+    <th>room type</th>
+
+    <th> Action</th>
+   
+  </tr>
+
+<% @results.each do |stock| %>  
+<% stock.rooms.each do |i|%>
+ <%if i.available?%>
+  <tr >
+    <td><%= i.roomnumber %></td>
+
+    <td><%= i.description %></td>
+    <td><%= i.status %></td>
+    <td> <%=image_tag stock.roomimg , style: "width:200px; display: block"%></td>
+        <td><%= i.roomtype.roomtype %></td>
+                <td><%= i.roomtype.cost %></td>
+
+        <td><%= link_to 'Book Now', new_room_booking_path(i), :class => 'btn btn-success btn-sm' %>
+
+
+   </tr>
+   <%end%>
+   <%end%>
+<% end %>
+</table>
+  
+   
+    <%= link_to 'Back To More Rooms', root_path %>

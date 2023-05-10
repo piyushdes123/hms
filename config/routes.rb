@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get '/search', to: "rooms#search"
   get 'bookings/index'
   devise_for :customers
   root "bookings#index"
 
+  
   resources :charges, only: [:new, :create]
 
  

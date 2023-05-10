@@ -13,7 +13,7 @@ class RoomtypesController < ApplicationController
     if @roomtype.save
       flash[:success] = 'Product has been added Successfully!'   
 
-      redirect_to  "/"
+      redirect_to  roomtypes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class RoomtypesController < ApplicationController
         flash[:notice] = 'Product has been Updated Successfully!'   
 
 
-        redirect_to "/"
+        redirect_to roomtypes_path
 
       else
         render :edit, status: :unprocessable_entity
