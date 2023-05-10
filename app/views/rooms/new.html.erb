@@ -1,6 +1,14 @@
 <center>
 
 <%= form_with model: @room do |form| %>
+<% if @room.errors.any? %>
+  <ul>
+  <% @room.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  </ul>
+  <%end%>
+<%end%>
+
 <div class = 'card'>
 
    <div class="field">

@@ -28,14 +28,18 @@ class RoomsController < ApplicationController
         @room = Room.find(params[:id])
        end
     
-  
+  def search
+ @roomtype  = params[:roomtype]
+ @results = Roomtype.where("roomtype LIKE ?", "%#{@roomtype}%")
+
+
+  end
        def update
         @room = Room.find(params[:id])
         if @room.update(room_params)
           flash[:notice] = 'Product has been Updated Successfully!'   
   
-  
-          redirect_to rooms_path
+        redirect_to rooms_path
   
         else
           render :edit, status: :unprocessable_entity
