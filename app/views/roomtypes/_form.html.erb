@@ -2,18 +2,28 @@
 
 <%= form_with model: @roomtype do |form| %>
 <div class = 'card'>
-  <div>
+    <div >
     <%= form.label :roomtype %><br>
     <%= form.text_field :roomtype %>
-  </div>
+     <% @roomtype.errors.full_messages_for(:roomtype).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+</div>
 
   <div>
     <%= form.label :cost %><br>
     <%= form.text_area :cost %>
+    <% @roomtype.errors.full_messages_for(:cost).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
   </div>
   <div>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
+    <% @roomtype.errors.full_messages_for(:description).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
+  </div>
   </div>
 
 
