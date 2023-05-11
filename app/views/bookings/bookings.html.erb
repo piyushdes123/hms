@@ -14,6 +14,7 @@
     <th>Room Number</th>
     <th>Amount</th>
     <th>Charges</th>
+    <th>Cancel Booking</th>
 
 
    
@@ -29,8 +30,12 @@
     <td><%= b.room.roomtype.cost%></td>
 
     <td><%= b.charges%></td>
-
-
+ <td>
+<%= link_to "Cancel Booking", [b.room,b], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p><td>
 
   </td>
 

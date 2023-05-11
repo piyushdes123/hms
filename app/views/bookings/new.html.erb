@@ -1,22 +1,22 @@
 <center>
 
 <%= form_with model: [@room, @room.bookings.build] do |form| %>
-<% if @room.errors.any? %>
-  <ul>
-  <% @room.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  </ul>
-  <%end%>
-<%end%>
+
 <div class = 'card'>
   <div>
     <%= form.label :booking_date %><br>
     <%= form.date_field :booking_date %>
+     <% @booking.errors.full_messages_for(:booking_date).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :check_in %><br>
     <%= form.date_field :check_in %>
+     <% @booking.errors.full_messages_for(:check_in).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
   </div>
 
 <div>
@@ -26,6 +26,9 @@
   <div>
     <%= form.label :check_out %><br>
     <%= form.date_field :check_out %>
+      <% @booking.errors.full_messages_for(:check_out).each do |message| %>
+      <div style="color: red"><%= message %></div>
+    <% end %>
   </div>
 
 
