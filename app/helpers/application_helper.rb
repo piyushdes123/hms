@@ -10,4 +10,5 @@ def flash_class(level)
     "warn" => "alert-warning"
   }
   bootstrap_alert_class[level]
+
 end
